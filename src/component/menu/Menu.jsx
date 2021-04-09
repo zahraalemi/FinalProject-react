@@ -1,6 +1,6 @@
 import NewCard from "../newcard/NewCard";
 import Wallet from '../wallet/Wallet';
-import {Switch, Route, Link} from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 
 const Menu = () => {
     return (
@@ -12,14 +12,14 @@ const Menu = () => {
 
             </Switch>
 
-            <div> 
+            {/* <div> 
                 <Link to="/">
                     <button>Wallet</button>
                 </Link>
                 <Link to="/newcard">
                     <button>Add A New Card</button>
                 </Link>
-            </div>
+            </div> */}
         </div>
     );
 }

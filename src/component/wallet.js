@@ -8,17 +8,22 @@ const walletSlice = createSlice({
                 cardno : "1234 5678 9123 4567",
                 date: "09/24",
                 cvv : '321',
-                type : "visa"
+                type : 1
             }
+
         ]
     },
     reducers :{
-        addCard : (state,action) =>{
+        addNewCard : (state,action) =>{
             state.listCard.push(action.payload)
+        },
+        removeCard : (state,action)=>{
+            state.listCard.splice(action.payload)
         }
     }
 });
 
 
-const { reducer } = walletSlice;
+const { reducer, actions } = walletSlice;
+export const { addNewCard, removeCard } =actions;
 export default reducer;

@@ -41,14 +41,20 @@ body{
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #282c3448;
+  min-height: 90vh;
+  border-radius: 15px;
+  
+  width: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   color: white;
+  box-shadow: 3px 5px 20px #211c1c;
 }
+
+
 
 .App-link {
   color: #61dafb;
@@ -66,9 +72,10 @@ body{
 
 
 
-.title {
-    margin-bottom: 30px;
-    color: #162969;
+.wallet-box{
+    /* display: flex;
+    flex-direction: column;
+    height: 250px; */
 }
 
 
@@ -90,7 +97,6 @@ z-index: 1000;
   display: inline-block;
     width: 320px;
     height: 190px;
-    background-image: url('https://image.ibb.co/bVnMrc/g3095.png'), linear-gradient(to right bottom, #fd696b, #fa616e, #f65871, #f15075, #ec4879); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -105,6 +111,23 @@ z-index: 1000;
     transform-style: preserve-3d;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+}
+.visa{
+  background-image: linear-gradient(to right bottom, #4564ff, #0650f0, #2135ce, #0a4ab8, #0033ff); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+}
+
+.masterCard{
+  background-image: linear-gradient(to right bottom, #fd696b, #fa616e, #f65871, #f15075, #ec4879); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+
+}
+
+.other{
+  background-image: linear-gradient(to right bottom, #1e2029, #1a1c24, #1f2230, #1f2235, #1f2240); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+
+}
+.americanCard{
+  background-image: linear-gradient(to right bottom, #0a5187, #124165, #0a3c61, #0a3c65, #0a3c69); /*linear-gradient(to right bottom, #fd8369, #fc7870, #f96e78, #f56581, #ee5d8a)*/
+
 }
 
 .card-front{
@@ -124,26 +147,24 @@ transform: rotateY(-180deg);
     height: 38px;
     background-color: #303030;
 }
-
+.flex-card{
+  display: flex;
+  justify-content: space-between;
+}
 .card-logo {
-    height: 16px;
+    height: 26px;
 }
 
-.card-front-logo{
-      position: absolute;
-    top: 18px;
-    right: 18px;
-}
 .card-square {
     border-radius: 5px;
     height: 30px;
 }
 
-.card-numer {
+.card-number {
     display: block;
     width: 100%;
     word-spacing: 4px;
-    font-size: 40px !important;
+    font-size: 20px;
     letter-spacing: 2px;
     color: #fff;
     text-align: center;
@@ -151,29 +172,20 @@ transform: rotateY(-180deg);
     margin-top: 20px;
 }
 
-.card-space-75 {
-    width: 75%;
-    float: left;
-}
-
-.card-space-25 {
-    width: 25%;
-    float: left;
-}
 
 .card-label {
-    font-size: 10px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.8);
-    letter-spacing: 1px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 1px;
 }
 
 .card-info {
-    margin-bottom: 0;
-    margin-top: 5px;
-    font-size: 16px;
-    line-height: 18px;
-    color: #fff;
+  margin-bottom: 0;
+  margin-top: 5px;
+  font-size: 16px;
+  line-height: 18px;
+  color: #fff;
   letter-spacing: 1px;
   text-transform: uppercase;
 }
@@ -186,7 +198,7 @@ transform: rotateY(-180deg);
     text-align: right;
     margin: 0;
     font-size: 14px;
-}
+ }
 
 .card-secret {
     padding: 5px 12px;
@@ -224,4 +236,11 @@ border-radius: 4px;
 
 .card:hover .card-back {
     transform: rotateY(0deg);
+}
+
+.close-btn{
+  color: red;
+  background: white;
+  border: none;
+  border-radius: 5px;
 }
