@@ -2,18 +2,28 @@ import visaCard from '../img/visaCard.png';
 import americanCard from '../img/americanCard.png';
 import masterCard from '../img/masterCard.png';
 import otherCard from '../img/otherCard.png';
-import hologram from '../img/hologram.png';
 import cheapset from '../img/cheapset.png';
+import {useDispatch } from 'react-redux';
+import { changeActiveCard} from '../wallet';
+
+
 
 const Card = (props) =>{
+    const dispatch = useDispatch();
+    const handleChangeActive = () =>{
+        
+        dispatch(changeActiveCard(props));
+        
+    }
+    
     return(
-        <div className="card">
-            <div className={"card-front card-part" + (props.type === 1 ? " visa" : props.type === 2 ? " masterCard" : props.type === 3 ? " americanCard" : " other")}>
+        <div className="card" key={props.key} onClick={handleChangeActive}>
+            <div className={"card-part padding-box" +(props.active ? " card-front" : "") + (props.type === 1 ? " visa" : props.type === 2 ? " masterCard" : props.type === 3 ? " americanCard" : " other")}>
                 <div className="flex-card">
                     <img src={cheapset} className="card-front-square card-square" alt="pic1"/>
                     <img src={(props.type === 1 ? visaCard : props.type === 2 ? masterCard : props.type === 3 ? americanCard : otherCard)} className="card-front-logo card-logo" alt="pic2"/>
                 </div>
-                <p className="card-number">{props.cardno == null ? "**** **** **** ****" : props.cardno}</p>
+                <p className="card-number">{props.cardno === '' ? "**** **** **** ****" : props.cardno}</p>
                 <div className="flex-card">
                     <div className="card-space-75">
                         <span className="card-label">Card holder</span>
@@ -25,19 +35,7 @@ const Card = (props) =>{
                     </div>
                 </div>
             </div>
-        
-            <div className={"card-back card-part" + (props.type === 1 ? " visa" : props.type === 2 ? " masterCard" : props.type === 3 ? " americanCard" : " other")}>
-                <div className="card-back-line"></div>
-                <div className="card-back-content">
-                    <div className="card-secret">
-                        <p className="card-secret-last">{props.cvv == null ? "CVV" : props.cvv}</p>
-                    </div>
-
-                    <img src={(props.type === 1 ? visaCard : props.type === 2 ? masterCard : props.type === 3 ? americanCard : otherCard)} className="card-back-square card-square" alt="pic2"/>
-                    <img className="card-back-logo card-logo" src={hologram} alt="asds"/>
-                    
-                </div>
-            </div>
+            
         </div>
     )
 }
