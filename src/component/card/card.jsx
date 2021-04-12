@@ -12,12 +12,12 @@ const Card = (props) =>{
     const dispatch = useDispatch();
     const handleChangeActive = () =>{
         
-        dispatch(changeActiveCard(props));
+        dispatch(changeActiveCard(props.id));
         
     }
     
     return(
-        <div className="card" key={props.key} onClick={handleChangeActive}>
+        <div className="card" onClick={handleChangeActive}>
             <div className={"card-part padding-box" +(props.active ? " card-front" : "") + (props.type === 1 ? " visa" : props.type === 2 ? " masterCard" : props.type === 3 ? " americanCard" : " other")}>
                 <div className="flex-card">
                     <img src={cheapset} className="card-front-square card-square" alt="pic1"/>

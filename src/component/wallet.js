@@ -1,7 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+export const getUsers = createAsyncThunk ("users/getUsers" , async () =>{
+    return fetch('https://randomuser.me/api')
+    .then((response)=> response.json());
+});
+
 const walletSlice = createSlice({
     name : "walletCard",
     initialState:{
+        listUser:[],
         listCard :[
             {
                 id : 0,
@@ -20,27 +27,41 @@ const walletSlice = createSlice({
             state.listCard.push(action.payload)
         },
         removeCard : (state,action)=>{
-            /* state.listCard.splice(action.payload,1) */
             state.listCard = state.listCard.filter((card) => card.id !== action.payload.id)
-            console.log(action.payload)
         },
 
         changeActiveCard : (state,action)=>{
-            const cardCvv = action.payload;
-            /* const item = state.listCard[cardCvv] */
+            /* const cardCvv = action.payload;
+            const item = state.listCard[cardCvv]
             console.log(cardCvv.active)
-            /* cardCvv.active = !cardCvv.active */
+            item.active = !item.active */
 
-            /* for(let i = 0; i< state.listCard.length; i++){
+             for(let i = 0; i< state.listCard.length; i++){
                 if(state.listCard[i].active === true){
-                    console.log(state.listCard[i].name)
                     state.listCard[i].active = false;
                 }
-                if(state.listCard[i].cvv === action.payload){
+                if(state.listCard[i].id === action.payload){
                     state.listCard[i].active = true;
                 }
-            } */
+            } 
         }
+    },
+
+    extraReducers:{
+        [getUsers.pending]: (state) => {
+            state.status ="loading..."
+            console.log(state.status);
+        },
+        [getUsers.fulfilled] : (state,action) => {
+            state.status = "success";
+            state.listUser = action.payload.results[0].name;
+            console.log(state.listUser)
+        },
+        [getUsers.rejected]:(state) => {
+            state.status ="rejected";
+            console.log(state.status);
+        }
+
     }
 });
 

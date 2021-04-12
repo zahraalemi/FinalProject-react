@@ -7,7 +7,7 @@ import cheapset from '../img/cheapset.png';
 
 const ActiveCard = (props) =>{
     return(
-        <div className="card actived" key={props.key}>
+        <div className="card actived">
             <div className={"card-front card-part padding-box" + (props.type === 1 ? " visa" : props.type === 2 ? " masterCard" : props.type === 3 ? " americanCard" : " other")}>
                 <div className="flex-card">
                     <img src={cheapset} className="card-front-square card-square" alt="pic1"/>
