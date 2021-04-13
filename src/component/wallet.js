@@ -26,9 +26,12 @@ const walletSlice = createSlice({
         addNewCard : (state,action) =>{
             state.listCard.push(action.payload)
         },
+
+
         removeCard : (state,action)=>{
             state.listCard = state.listCard.filter((card) => card.id !== action.payload.id)
         },
+        
 
         changeActiveCard : (state,action)=>{
             /* const cardCvv = action.payload;
@@ -54,8 +57,10 @@ const walletSlice = createSlice({
         },
         [getUsers.fulfilled] : (state,action) => {
             state.status = "success";
-            state.listUser = action.payload.results[0].name;
-            console.log(state.listUser)
+            const user = action.payload.results[0].name;
+            console.log(user)
+            state.listCard[0].name = (user.first + " " + user.last).toUpperCase();
+            
         },
         [getUsers.rejected]:(state) => {
             state.status ="rejected";

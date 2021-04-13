@@ -8,7 +8,6 @@ import ActiveCard from '../card/ActiveCard';
 
 const Wallet = () => {
     const listCard = useSelector((state) => state.cardWallet.listCard);
-    console.log(listCard)
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -53,6 +52,7 @@ const Wallet = () => {
                             </div>
                         )
                     }
+                    return null;
                 })}
                 {listCard && listCard.map((card,i)=>{
                     if(!card.active){
@@ -65,6 +65,7 @@ const Wallet = () => {
                             </div>
                         )
                     }
+                    return null;
                 })}
 
             </div>
